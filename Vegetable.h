@@ -32,9 +32,16 @@ public:
         std::cout << isOrganic() << std::endl;
     }
 
-    double GetPrice() {
-        return price;
+    virtual bool operator==(const Vegetable& rhs) {
+        bool result = (ProduceItem) *this == (ProduceItem) rhs;
+        bool result2 = (organic == rhs.organic);
+        return result && result2;
     }
+    friend ostream& operator<<(ostream& os, const Vegetable& item) {
+        os << (ProduceItem) item << item.organic << std::endl;
+        return os;
+    }
+
 };
 
 

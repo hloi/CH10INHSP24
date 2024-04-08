@@ -43,6 +43,46 @@ int main() {
     listItems2.push_back(&v1);
     listItems2.at(1)->PrintItem();
 
+    ProduceItem* p1 = new ProduceItem("Banana", 5, "May 1, 2024", 1.5);
+    Vegetable* p2 = new Vegetable("Carrot", 3, "May 1, 2024", 1.5, true);
+    Vegetable* p3 = new Vegetable("Carrot", 3, "May 1, 2024", 1.5, true);
+    Vegetable* p4 = new Vegetable("Banana", 5, "May 1, 2024", 2.0, true);
+    Vegetable* p5 = new Vegetable("Carrot", 3, "May 1, 2024", 1.5, true);
 
+    cout << *p1 << *p2 << *p3 << *p4 << *p5 << endl;
+
+
+    listItems2.push_back(p1);
+    listItems2.push_back(p2);
+    listItems2.push_back(p3);
+
+    listItems2.push_back(p4);
+    listItems2.push_back(p5);
+
+    if (p1->operator==(*p2))
+        cout << "p1 and p2 are equal" << endl;
+    else
+        cout << "p1 and p2 are not equal" << endl;
+
+
+//    if (*p1 == *p4)
+//        cout << "p1 and p4 are equal" << endl;
+//    else
+//        cout << "p1 and p4 are not equal" << endl;
+//
+//    if (*p1 == *p2)
+//        cout << "p1 and p2 are equal" << endl;
+//    else
+//        cout << "p1 and p2 are not equal" << endl;
+//
+//    if (*p2 == *p3)
+//        cout << "p2 and p3 are equal" << endl;
+//    else
+//        cout << "p2 and p3 are not equal" << endl;
+
+    if (*p2 == *p5)
+        cout << "p2 and p5 are equal" << endl;
+    else
+        cout << "p2 and p5 are not equal" << endl;
     return 0;
 }

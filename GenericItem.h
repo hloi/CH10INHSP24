@@ -7,9 +7,10 @@
 
 #include <string>
 #include <iostream>
+#include <sstream>
 
 using std::string;
-
+using std::ostream;
 
 // Base class
 class GenericItem {
@@ -20,6 +21,13 @@ public:
         this->itemName = name;
         this->itemQuantity = quantity;
     }
+
+    GenericItem(string name, int quantity, double price) {
+        this->itemName = name;
+        this->itemQuantity = quantity;
+        this->price = price;
+    }
+
     void SetName(string newName) {
         itemName = newName;
     }
@@ -32,14 +40,19 @@ public:
         std::cout << itemName << " " << itemQuantity << " " << price << std::endl;
     }
 
-    virtual double GetPrice() = 0;  // pure virtual
-    virtual void SetPrice(double p) = 0; // pure virtual
+    virtual double GetPrice() { return price; }
+    virtual void SetPrice(double p) { this->price = p; } // pure virtual
+    virtual bool operator==(const GenericItem& rhs) {
+        return itemName == rhs.itemName && itemQuantity == rhs.itemQuantity && price == rhs.price;
+    }
 
+    friend ostream& operator<<(ostream& os, const GenericItem& item) {
+        os << item.itemName << " " << item.itemQuantity << " " << item.price << std::endl;
+        return os;
+    }
 private:
     string itemName;
     int itemQuantity;
-
-protected:
     double price;
 };
 

@@ -11,10 +11,7 @@ class ProduceItem : public GenericItem {
 public:
     ProduceItem() {}
 
-    ProduceItem(string name, int quantity, string expireDate, double price) {
-        this->SetName(name);
-        this->SetQuantity(quantity);
-        this->SetPrice(price);
+    ProduceItem(string name, int quantity, string expireDate, double price) : GenericItem(name, quantity, price) {
         this->expirationDate = expireDate;
     }
     void SetExpiration(string newDate) {
@@ -30,11 +27,16 @@ public:
         std::cout << expirationDate << std::endl;
     }
 
-    void SetPrice(double price) {
-        this->price = price;
+
+    virtual bool operator==(const ProduceItem& rhs) {
+        bool result = (GenericItem) *this == (GenericItem) rhs;
+        bool result2 = expirationDate == rhs.expirationDate;
+        return result && result2;
     }
-    double GetPrice() {
-        return price;
+
+    friend ostream& operator<<(ostream& os, const ProduceItem& item) {
+        os << (GenericItem) item << item.expirationDate << std::endl;
+        return os;
     }
 private:
     string expirationDate;

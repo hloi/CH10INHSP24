@@ -9,4 +9,6 @@ add_executable(CH10INHSP24 main.cpp
         ProduceItem.cpp
         ProduceItem.h
         Vegetable.cpp
-        Vegetable.h)
+        Vegetable.h
+        ListItems.cpp
+        ListItems.h)
